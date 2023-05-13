@@ -91,3 +91,5 @@ I've never had to deal with high performance issues on the frontend so this is m
 - Have frontend data processing done in webassembly so it will be faster
 - "Don't block the main thread"
   - Use webworkers to handle as many calculations as possible (especially if the frontend is doing non-trivial data processing)
+- Crazy idea: If the chart code is complex to produce, but actually small once it is created _and_ updates are infrequent we could SSR the chart and stream the finished html to the client
+  - That way their client will always be responsive (aside from the brief periods where we need to swap out the component with the new one)
