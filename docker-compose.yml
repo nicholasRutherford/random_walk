@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  express-server:
+    build:
+      context: .
+      dockerfile: express.Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis-server
+    environment:
+      - REDIS_HOST=redis-server
+      - REDIS_PORT=6379
+    networks:
+      - my_network
+
+  redis-server:
+    image: "redis:alpine"
+    networks:
+      - my_network
+
+  red-publisher:
+    build:
+      context: .
+      dockerfile: red_publisher.Dockerfile
+    depends_on:
+      - redis-server
+    environment:
+      - REDIS_HOST=redis-server
+      - REDIS_PORT=6379
+    networks:
+      - my_network
+  
+  blue-publisher:
+    build:
+      context: .
+      dockerfile: blue_publisher.Dockerfile
+    depends_on:
+      - redis-server
+    environment:
+      - REDIS_HOST=redis-server
+      - REDIS_PORT=6379
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+
+
