@@ -55,6 +55,8 @@ of the four cardinal directions and repeat.
 - Clean up App.tsx
   - A bit messy with types and data helpers. Would be nicer if those were split out, but it is a small enough amount of code that I think it is fine where it is
 - Handle `any` types
+- Make the charts look nicer
+- Rather than just keeping the most 100 recent points it would be fun to roll-up the data to be able to show a general history
 
 # Questions
 
