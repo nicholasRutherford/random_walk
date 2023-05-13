@@ -37,7 +37,7 @@ of the four cardinal directions and repeat.
 - Two node processes publish events
   - Just for fun. This is to simulate having multiple streams of data coming in and displaying both of those on one page
 - Why have the client process data?
-  - For fun. More interesting then having the frontend jut display what the backend sends it. I think in a real application you would do as much processing as you could on the backend but the frontend will still need to do some.
+  - For fun. More interesting then having the frontend just display what the backend sends it. I think in a real application you would do as much processing as you could on the backend but the frontend will still need to do some.
 
 # Project plan
 
@@ -76,7 +76,7 @@ There are a few strategies to help manage large amounts of data
   - Could send bits rather than json strings
 - Optimize for small updates
   - If we need to send a lot of data to our frontend, it would make sense to optimize for small updates. So maybe sending the whole state every tick would be easiest, but that is a lot of data. So we're better off sending a small update and then having more complicated logic on the frontend to handle that
-- batch messages
+- Batch messages
   - Still the same amount of work, but maybe by batching we can avoid some overhead?
     - I'm not sure how much overhead there is for receiving something over a websocket?
 
@@ -87,7 +87,7 @@ I've never had to deal with high performance issues on the frontend so this is m
 - Minimize the amount that has to be re-rendered
   - I think this would depend on the charting library used, but have a good understanding of how that process works would be important
 - Limit data being shown
- - Probably can't see the difference between 100k points and 1M points on a scatter chart. Use data roll-ups to keep the amount of data we're dealing with reasonable. 
+  - Probably can't see the difference between 100k points and 1M points on a scatter chart. Use data roll-ups to keep the amount of data we're dealing with reasonable. 
 - Have frontend data processing done in webassembly so it will be faster
 - "Don't block the main thread"
   - Use webworkers to handle as many calculations as possible (especially if the frontend is doing non-trivial data processing)
